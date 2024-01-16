@@ -1,0 +1,60 @@
+﻿
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    @section scripts {
+
+        @*Put Operation*@
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#up").click(function () {
+                    var d = $("#ud").val();
+                    var e = $("#ud1").val();
+                    var f = $("#ud2").val();
+
+                    $.ajax({
+                        type: 'PUT',
+                        url: "https://localhost:44315/api/values?id=" + d + "&FirstName=" + e + "&LastName=" + f,
+                        //data: {
+                        //    id: d,
+                        //    FirstName: e,
+                        //    LastName:f,
+                        //},
+                        datatype: 'jsonp',
+                        success: function (data) {
+                            var count = Object.keys(data).length;
+                            if ($.trim(data) == '') {
+                                alert("Not a valid Teacher id " + count);
+                            }
+
+                            else {
+                                alert("data successfuly Updated");
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Status: " + textStatus);
+                        }
+                    });
+                });
+            });
+        </script>
+
+
+    }
+</head>
+
+<body>
+        <div>
+            <h1> Update Teacher</h1>
+            id:   <input type="number" name="ud" id="ud" />
+            First Name:  <input type="text" name="ud1" id="ud1" />
+            Last Name: <input type="text" name="ud2" id="ud2" />
+            click button:   <input id="up" type="button" value="update data" />
+        </div>
+      
+</body>
+</html>
+

@@ -1,0 +1,52 @@
+﻿
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    @section scripts {
+        @*Insert Operation*@
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#Is").click(function () {
+                    var g = $("#Is1").val();
+                    var h = $("#Is2").val();
+
+                    $.ajax({
+                        type: 'Post',
+                        url: "https://localhost:44315/api/values?FirstName=" + g + "&LastName=" + h,
+                        datatype: 'jsonp',
+                        success: function (data) {
+                            var count = Object.keys(data).length;
+                            if ($.trim(data) == '') {
+                                alert("Not a valid Teacher data " + count);
+                            }
+
+                            else {
+                                alert("data successfuly Inserted");
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Status: " + textStatus);
+                        }
+                    });
+                });
+            });
+        </script>
+
+
+    }
+</head>
+
+<body>
+        <div>
+            <h1> Insert Teacher</h1>
+            First Name:  <input type="text" name="Is1" id="Is1" />
+            Last Name: <input type="text" name="Is2" id="Is2" />
+            click button:   <input id="Is" type="button" value="Insert data" />
+        </div>
+
+    
+</body>
+</html>
+

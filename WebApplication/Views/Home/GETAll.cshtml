@@ -1,0 +1,47 @@
+﻿
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    @*GET opertion*@
+    @section scripts {
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#clear').click(function () { $('#Teachers').empty(); });
+                $("#btnSubmit").click(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: "https://localhost:44315/api/values",
+                        datatype: 'jsonp',
+                        success: function (data) {
+                            $.each(data, function (i, emp) {
+                                var result = emp.TeacherId + " " + emp.FirstName + " " + emp.LastName;
+                                $('#Teachers').append($('<li>', { text: result }, '</li>'));
+                            });
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Status: " + textStatus);
+                        }
+                    });
+                });
+            });
+        </script>
+
+    } 
+
+<body>
+        <div>
+            <div>
+                <h1>Teachers List</h1>
+                click button: <input id="btnSubmit" type="button" value="List" />     <input id="clear" type="button" value="clear" />
+            </div>
+
+            <div>
+                <ul id="Teachers"></ul>
+            </div>
+        </div>
+       
+</body>
+</html>
+

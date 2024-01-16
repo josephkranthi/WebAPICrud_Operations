@@ -1,0 +1,63 @@
+﻿
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    @section scripts {
+        @*//GET opertion by ID*@
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#clearD').click(function () { $('#Teacher').empty(); });
+                $("#Submit").click(function () {
+                    var b = $("#txta").val();
+
+                    $.ajax({
+                        type: 'GET',
+                        url: "https://localhost:44315/api/values",
+                        data: {
+                            id: b,
+                        },
+                        datatype: 'jsonp',
+                        success: function (data) {
+                            var count = Object.keys(data).length;
+                            if ($.trim(data) == '') {
+                                alert("Data not exist " + count);
+                            }
+
+                            else {
+                                $.each(data, function (i, emp) {
+                                    var result = emp.TeacherId + " " + emp.FirstName + " " + emp.LastName;
+                                    $('#Teacher').append($('<li>', { text: result }, '</li>'));
+                                });
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Status: " + textStatus);
+                        }
+                    });
+                });
+            });
+        </script>
+
+
+    }
+</head>
+
+<body>
+    
+        <div>
+            <div>
+                <h1>Get Teacher</h1>
+                id:  <input type="number" name="txta" id="txta" />
+                click button:  <input id="Submit" type="button" value="one data" /> <input id="clearD" type="button" value="clearData" />
+            </div>
+
+            <div>
+                <ul id="Teacher"></ul>
+            </div>
+        </div>
+        
+</body>
+</html>
+

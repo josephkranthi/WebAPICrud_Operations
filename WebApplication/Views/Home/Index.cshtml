@@ -1,0 +1,26 @@
+﻿
+<html>
+<head>
+    <script type="text/javascript">
+        function goToNewPage() {
+            var url = document.getElementById('list').value;
+            if (url != 'none') {
+                window.location = url;
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <select name="list" id="list" accesskey="target">
+            <option value='none' selected>Choose a operation</option>
+            <option value="GET">GET</option>
+            <option value="GETALL">GETALL</option>
+            <option value="POST">INSERT</option>
+            <option value="PUT">UPDATE</option>
+            <option value="DELETE">DELETE</option>
+        </select>
+        <input type=button value="Go" onclick="goToNewPage()" />
+    </form>
+</body>
+</html>

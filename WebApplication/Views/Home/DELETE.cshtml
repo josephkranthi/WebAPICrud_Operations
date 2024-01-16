@@ -1,0 +1,51 @@
+﻿
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+
+    @section scripts {
+
+
+        @*Delete Operation*@
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#Sub").click(function () {
+                    var c = $("#del").val();
+
+                    $.ajax({
+                        type: 'DELETE',
+                        url: "https://localhost:44315/api/values?id=" + c,
+                        datatype: 'jsonp',
+                        success: function (data) {
+                            var count = Object.keys(data).length;
+                            if ($.trim(data) == '') {
+                                alert("Not a valid Teacher id " + count);
+                            }
+
+                            else {
+                                alert("data successfuly deleted");
+                            }
+                        },
+                        error: function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("Status: " + textStatus);
+                        }
+                    });
+                });
+            });
+        </script>
+    }
+</head>
+
+<body>
+
+        <div>
+            <h1> Delete Teacher</h1>
+            id:  <input type="number" name="del" id="del" />
+            click button: <input id="Sub" type="button" value="delete data" />
+        </div>
+
+</body>
+</html>
+

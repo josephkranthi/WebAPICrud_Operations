@@ -1,5 +1,5 @@
 ## Teacher Project
-To Perform CRUD (Create, Read, Update, Delete) operation by using WEB API UI/postman to manage teacher details in Sql Server Database. 
+To manage teacher details in a SQL Server Database, you can utilize a Web API and interact with it using a UI or Postman to perform CRUD operations (Create, Read, Update, Delete). This involves creating, retrieving, updating, and deleting teacher records in the database through the exposed API endpoints
 
  ## Tech Stacks
  C#, .NET WEB API, .NET MVC, Entity Framework, SQL Server, Html, bootstrap, Javascript, jquery, ajax

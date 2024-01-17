@@ -1,7 +1,7 @@
 Teacher Project:-
 To Perform CRUD (Create, Read, Update, Delete) operation by using WEB API UI/postman to manage teacher details in Sql Server Database. 
 
-Tech Stacks: .NET WEB API, .NET MVC, Entity Framework, SQL Server, Html, bootstrap, Javascript, jquery, ajax
+Tech Stacks: C#, .NET WEB API, .NET MVC, Entity Framework, SQL Server, Html, bootstrap, Javascript, jquery, ajax
 
 Database Setup:- The project uses a SQL Server database to store contact information. 
 CREATE TABLE [dbo].[Teachers](
